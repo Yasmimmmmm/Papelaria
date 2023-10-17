@@ -1,0 +1,51 @@
+﻿@model List<Papelaria.Models.RelatorioProduto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Produtos</h2>
+
+<form method="post" asp-action="Index">
+    <input type="text" name="inFiltroProd" />
+    <input type="text" name="inFiltroCat" />
+    <button type="submit">Pesquisar</button>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Produto
+            </th>
+            <th>
+                Quantidade
+            <th>
+                Categoria
+            </th>
+            <th>
+                Preço
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quanti)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaProd.CategoriaProdName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

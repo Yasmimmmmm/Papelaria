@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Papelaria.Models.CategoriaProd>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Categoria de Produtos</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Criar um Novo</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoriaProdName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoriaProdName)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.CategoriaProdId" class="btn btn-outline-dark">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.CategoriaProdId" class="btn btn-outline-info" style="color:black">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CategoriaProdId" class="btn btn-outline-danger" style="color:black">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

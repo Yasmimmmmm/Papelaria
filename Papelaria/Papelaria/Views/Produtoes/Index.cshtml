@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Papelaria.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Produtos</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Criar um Novo</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoriaProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fornecedor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaProd.CategoriaProdName)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Fornecedor.FornecedorNome)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProdutoId" class="btn btn-outline-dark">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProdutoId" class="btn btn-outline-info" style="color:black">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProdutoId" class="btn btn-outline-danger" style="color:black">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
